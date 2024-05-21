@@ -1,5 +1,5 @@
 import GlobalStyle from "./globalStyles"
-import { Light } from "./constants/Theme"
+import { Light } from "./constants/theme"
 import { ThemeProvider } from "styled-components"
 import RoutesContainer from "./components/routes"
 function App({routes}) {

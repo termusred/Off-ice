@@ -5,12 +5,14 @@ import { Search } from 'react-feather';
 import { ShoppingBag } from "react-feather";
 import { User } from "react-feather";
 import {SHOP} from "../../constants/ROUTES"
+import { Moon } from "react-feather";
+import { useNavigate } from "react-router-dom";
 
 const Nav = styled.nav`
     display: flex;
     justify-content: space-evenly;
     position: sticky;
-    top: 2rem;
+    top: 0px;
     height: 7rem;
     background-color: ${({theme}) => theme.Nav};
 `
@@ -40,7 +42,11 @@ const IconCon = styled.div`
     width: 18rem;
     height: 100%;
 `
+const ScaleUp = styled.h1`
+    scale: 1.3;
+`
 const Navbar = () => {
+    const navigate = useNavigate();
     return(
         <Nav>
             <LogoCon>
@@ -63,9 +69,11 @@ const Navbar = () => {
                 </Navtext>
             </PagesCon>
             <IconCon>
-                <Search size={34}/>
-                <ShoppingBag size={34}/>
-                <User size={34}/>
+                <Search size={34} onClick={() => navigate("/search")}/>
+                <ShoppingBag size={34} onClick={() => navigate("/cart")}/>
+                <ScaleUp>|</ScaleUp>
+                <Moon size={34} />
+                <User size={34} onClick={() => navigate("/profile")}/>
             </IconCon>
         </Nav>
     )
