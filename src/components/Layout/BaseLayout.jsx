@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import Navbar from "../Navbar/Navbar"
+import Footer from "../Footer/Footer"
 
 const Container = styled.div`
     margin: 2rem;
@@ -14,6 +15,7 @@ const BaseLayout = ({children}) => {
             <Basement>
                 {children}
             </Basement>
+            <Footer/>
         </Container>
     )
 }

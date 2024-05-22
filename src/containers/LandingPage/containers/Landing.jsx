@@ -1,9 +1,8 @@
 import styled from "styled-components"
-import Can1 from "../../../img/Beverage_Can_OMJ!_Sparkling_Tropical_330ml.G03.watermarked.2k-transformed.png"
-import Can2 from "../../../img/Beverage_Can_Pepsi_Cherry_Vanilla_330ml.G03.watermarked.2k-transformed.png"
-import Can3 from "../../../img/Chupa Chups Grape 330ml Beverage Can.G03.watermarked.2k.png"
+import { Cocain } from "../../../img/CansPicture"
 import { useState } from "react"
 import Delivary from "../../../img/—Pngtree—motorcycles cartoon pizza and food_7514344.png"
+import Vend1 from "../../../img/Vending Machine Fanta.G02.watermarked.2k.png"
 
 const Container = styled.div`
     display: flex;
@@ -16,21 +15,28 @@ const Title = styled.span`
     margin-top: 5rem;
     font-size: 6rem;
 `
+
 const Can = styled.div`
     display: flex;
     height: 100%;
     width: 50%;
     background-size: cover;
-    animation: Canswitch 2s infinite ease-in-out;
+    animation: Canswitch 1s infinite ease-in-out;
     @keyframes Canswitch {
         0%{
-            background-image: url(${Can1});
+            background-image: url(${Cocain[0].img});
+        }
+        25%{
+            background-image: url(${Cocain[1].img});
         }
         50%{
-            background-image: url(${Can2});
+            background-image: url(${Cocain[2].img});
+        }
+        70%{
+            background-image: url(${Cocain[1].img});
         }
         100%{
-            background-image: url(${Can1});
+            background-image: url(${Cocain[0].img});
         }
     }
 `
@@ -80,7 +86,8 @@ const IndividualCan = styled.img`
     width: 16rem;
     height: 18rem;
     &:hover{
-        transition: all 10ms;
+        scale: 1.1;
+        transition: all 1s;
         background-color: #f0f0f0;
     }
     background-color: #ffffff64;
@@ -99,14 +106,18 @@ const DeliveryTitle = styled.div`
 `
 const Land = styled.div`
     width: 100%;
-    height: 10rem;
-    background-color: red;
+    height: 25rem;
+    color: white;
+    font-size: 2rem;
+    cursor: default;
+    background-color: #202020;
 `
 const Bike = styled.img`
     position: relative;
+    top: 10rem;
     left: 0px;
     width: 20rem;
-    animation: Car 4s infinite;
+    animation: Car 10s infinite;
     @keyframes Car {
         0%{
         }
@@ -115,21 +126,59 @@ const Bike = styled.img`
         }
     }
 `
+const Info = styled.div`
+    display: flex;
+    height: 50vh;
+    width: 100%;
+    background-color: black;
+`
+const Text = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 50%;
+    color: white;
+    height: 100%;
+`
+const SmallerText = styled.h3`
+
+`
+const InfoTitle = styled.h1`
+    
+`
+const ForOffices = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    height: 100vh;
+    width: 100%;
+    border-radius: 2rem;
+`
+const Vens = styled.div`
+    display: flex;
+    gap: 2rem;
+`
+const Bg = styled.div`
+    padding: 8rem;
+    border-radius: 2rem;
+    background-color: ${({theme}) => theme.ForOffice.background};
+`
 const Landing = () => {
-    const Cans = [
-        Can1,
-        Can2,
-        Can3,
-        Can1,
-        Can2,
-        Can3,
-        Can1,
-        Can2,
+    const Vuns = [
+        Vend1,
+        Vend1,
+        Vend1,
+        Vend1,
+
     ]
-    let [AllDs , setAllDs] = useState(1221)
+    let [AllDs , setAllDs] = useState(21)
     setInterval(() => {
         setAllDs(++AllDs)
-    } , 4000);
+    } , 10000);
+
     return(
         <Container>
             <HeroBanner>
@@ -142,18 +191,34 @@ const Landing = () => {
             <AllDrinks>
                 <CansTitle>All drinks we have in stock</CansTitle>
                 <CansShowing>
-                    {Cans.map((el) => {
+                    {Cocain.map((el , ind) => {
                         return(
-                            <IndividualCan src={el}></IndividualCan>
+                            <IndividualCan src={el.img} key={ind}></IndividualCan>
                         )
                     })}
                 </CansShowing>
             </AllDrinks>
             <Delivery>
-                <DeliveryTitle><CansTitle>We delivered {AllDs} since opening</CansTitle></DeliveryTitle>
+                <DeliveryTitle><CansTitle>We delivered {AllDs} times since you opened this page</CansTitle></DeliveryTitle>
                 <Bike src={Delivary}></Bike>
-                <Land></Land>
+                <Land>From us to you</Land>
             </Delivery>
+            <ForOffices>
+                <Bg>
+                    <CansTitle>We also provide vending machines</CansTitle>
+                    <Vens>
+                        {Vuns.map((el, ind) => {
+                            return (<IndividualCan src={el} key={ind}></IndividualCan>)
+                        })}
+                    </Vens>
+                </Bg>
+            </ForOffices>
+            <Info>
+                <Text>
+                    <InfoTitle>Read before complaining</InfoTitle>
+                    <SmallerText>We pack your drinks and deliver it straight to you. <br /> We <strong>dont</strong>  produce anything and  <br />we <strong>do not</strong>  have responsability for any harm done by drinks. </SmallerText>
+                </Text>
+            </Info>
         </Container>
     )
 }

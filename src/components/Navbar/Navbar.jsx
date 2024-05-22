@@ -12,6 +12,7 @@ const Nav = styled.nav`
     display: flex;
     justify-content: space-evenly;
     position: sticky;
+    z-index: 12;
     top: 0px;
     height: 7rem;
     background-color: ${({theme}) => theme.Nav};
@@ -69,7 +70,7 @@ const Navbar = () => {
                 </Navtext>
             </PagesCon>
             <IconCon>
-                <Search size={34} onClick={() => navigate("/search")}/>
+                <Search size={34} onClick={() => console.log("finish me")}/>
                 <ShoppingBag size={34} onClick={() => navigate("/cart")}/>
                 <ScaleUp>|</ScaleUp>
                 <Moon size={34} />

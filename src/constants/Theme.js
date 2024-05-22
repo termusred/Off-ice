@@ -5,6 +5,9 @@ export const Light = {
     Landing:"#FBE5B1",
     AllDrinks:{
         background:"#ebc2b9",
+    },
+    ForOffice:{
+        background:"#FBE5B1"
     }
 }
 
