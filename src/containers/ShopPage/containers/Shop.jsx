@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { Cocain } from "../../../img/CansPicture"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState } from "react";
 
 const Container = styled.div`
     display: flex;
@@ -32,7 +33,8 @@ const Image = styled.img`
     width: 12rem;
 `
 const Cardbody = styled.div`
-
+    display: flex;
+    flex-direction: column;
 `
 const Button = styled.button`
     width: 8rem;
@@ -40,20 +42,34 @@ const Button = styled.button`
     border: 0px;
     &:hover{
         transition: all 400ms;
-        background-color: #c4aaaa;
+        background-color: #cec1c1;
     }
     border-radius: 8px;
 `
 const Text = styled.h3`
 
 `
+const ButtonB = styled.button`
+        padding: 8px;
+    border: 0px;
+    &:hover{
+        transition: all 400ms;
+        background-color: #cec1c1;
+    }
+    border-radius: 8px;
+`
+const Btns = styled.div`
+    display: flex;
+    gap: 1rem;
+`
 const Shop = () => {
+    const [Amount , setAmout] = useState(1)
     return(
         <Container>
             <Title>Get drinks into your cart</Title>
             <Cans>
                 {Cocain.map((el, id) => {
-                    const notify = () =>toast(`You have successfuly added ${el.desc} into cart 🍷`, {
+                    const notify = () =>toast(`You have successfuly added ${Amount} ${el.desc} into cart 🍷`, {
                         zIndex:"9999999999999999",
 
                     });
@@ -61,7 +77,10 @@ const Shop = () => {
                             <Card key={id}>
                             <Image src={el.img}/>
                             <Cardbody>
-                                <Button onClick={notify}>Into Cart</Button>
+                                <Btns>
+                                    <Button onClick={notify}>Into Cart</Button>
+                                    <ButtonB onClick={() => Amount < 10 ? setAmout(Amount + 1): setAmout(1)}>{Amount}</ButtonB>
+                                </Btns>
                                 <ToastContainer />
                                 <Text>{el.desc}</Text>
                             </Cardbody>

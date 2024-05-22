@@ -57,6 +57,7 @@ const HeroBanner = styled.div`
     display: flex;
     text-align: center;
     height: 100vh;
+    flex-wrap: wrap;
     background-color: ${({theme}) => theme.Landing};
 `
 const AllDrinks = styled.div`
@@ -166,6 +167,16 @@ const Bg = styled.div`
     border-radius: 2rem;
     background-color: ${({theme}) => theme.ForOffice.background};
 `
+const AboutUs = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    width: 80rem;
+    height: 30rem;
+    border-radius: 1rem;
+    background-color: #ffffff;
+`
 const Landing = () => {
     const Vuns = [
         Vend1,
@@ -189,6 +200,10 @@ const Landing = () => {
                 <Can></Can>
             </HeroBanner>
             <AllDrinks>
+                <AboutUs>
+                    <CansTitle>The biggest drinks seller in the market</CansTitle>
+                    <SmallerText>We provide our custemers with drinks they get. <br /> Most of custemers are offices with many thisty employees. <br /> But we sell drinks to ordinary people too. <br /> Prices are low and delivary is fast. <br /> If you want vending machines , we can give you that. <br /> We provide every thing releted to soft drinks</SmallerText>
+                </AboutUs>
                 <CansTitle>All drinks we have in stock</CansTitle>
                 <CansShowing>
                     {Cocain.map((el , ind) => {
