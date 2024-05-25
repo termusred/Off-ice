@@ -63,12 +63,12 @@ const Btns = styled.div`
     gap: 1rem;
 `
 const Shop = () => {
-    const [Amount , setAmout] = useState(1)
     return(
         <Container>
             <Title>Get drinks into your cart</Title>
             <Cans>
                 {Cocain.map((el, id) => {
+                    const [Amount , setAmout] = useState(1)
                     const notify = () =>toast(`You have successfuly added ${Amount} ${el.desc} into cart 🍷`, {
                         zIndex:"9999999999999999",
 
